@@ -1,33 +1,71 @@
-HELP.md
-target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+# -------------------------
+# Maven
+# -------------------------
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+**/logs/
+**/*.log
+*.class
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
+# -------------------------
+# Application Config
+# -------------------------
+# Ignore real config, allow sample config
+src/main/resources/application.properties
+!src/main/resources/application-sample.properties
+
+# -------------------------
+# Eclipse
+# -------------------------
 .project
-.settings
-.springBeans
-.sts4-cache
+.classpath
+.settings/
+*.launch
 
-### IntelliJ IDEA ###
-.idea
-*.iws
+# -------------------------
+# IntelliJ
+# -------------------------
+.idea/
 *.iml
-*.ipr
+*.iws
+out/
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# -------------------------
+# NetBeans
+# -------------------------
+nbproject/private/
 build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
 
-### VS Code ###
+# -------------------------
+# VS Code
+# -------------------------
 .vscode/
+
+# -------------------------
+# OS-specific files
+# -------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------
+# Environment files
+# -------------------------
+.env
+.env.local
+
+# -------------------------
+# Build and Dependency Caches
+# -------------------------
+.mvn/
+!/.mvn/wrapper/maven-wrapper.jar
+.cache/
+dependency-reduced-pom.xml
+
+# -------------------------
+# Docker
+# -------------------------
+docker-compose.override.yml
