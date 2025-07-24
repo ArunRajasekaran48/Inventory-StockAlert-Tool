@@ -1,7 +1,7 @@
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-const API_URL = 'http://localhost:8080/api';
+const API_URL = 'https://inventory-stockalert-tool.onrender.com/api';
 
 // Create axios instance
 const api = axios.create({
