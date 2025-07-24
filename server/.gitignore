@@ -11,9 +11,6 @@
 # Application Config
 # -------------------------
 # Ignore real config, allow sample config
-src/main/resources/application.properties
-!src/main/resources/application-sample.properties
-
 # -------------------------
 # Eclipse
 # -------------------------
