@@ -8,6 +8,7 @@ const Navbar = () => {
   const navigate = useNavigate()
   const [unreadCount, setUnreadCount] = useState(0)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [navColor, setNavColor] = useState("blue") // NEW STATE
 
   useEffect(() => {
     if (isAdmin()) {
@@ -34,15 +35,23 @@ const Navbar = () => {
 
   if (!user) {
     return (
-      <nav className="bg-gradient-to-r from-blue-600 to-blue-700 shadow-xl border-b border-blue-500">
+      <nav className={
+        navColor === "green"
+          ? "bg-gradient-to-r from-green-600 to-green-700 shadow-xl border-b border-green-500"
+          : "bg-gradient-to-r from-blue-600 to-blue-700 shadow-xl border-b border-blue-500"
+      }>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <Link to="/" className="flex items-center space-x-3">
-              <div className="bg-white bg-opacity-20 rounded-lg p-2">
+              <div className={
+                navColor === "green"
+                  ? "bg-white bg-opacity-20 rounded-lg p-2 border border-green-500"
+                  : "bg-white bg-opacity-20 rounded-lg p-2"
+              }>
                 <svg
                     className="w-8 h-8"
                     fill="none"
-                    stroke="#2563eb" 
+                    stroke={navColor === "green" ? "#16a34a" : "#2563eb"}
                     viewBox="0 0 24 24"
                   >
                     <path
@@ -60,12 +69,14 @@ const Navbar = () => {
               <Link
                 to="/login"
                 className="text-white hover:text-blue-700 font-medium transition duration-200 px-4 py-2 rounded-lg hover:bg-white hover:bg-opacity-10"
+                onClick={() => setNavColor("blue")}
               >
                 Sign In
               </Link>
               <Link
                 to="/signup"
-                className="bg-white text-blue-600 hover:bg-blue-50 font-semibold px-6 py-2 rounded-lg transition duration-200 transform hover:scale-105 shadow-lg"
+                className="bg-white text-green-600 hover:bg-green-50 font-semibold px-6 py-2 rounded-lg transition duration-200 transform hover:scale-105 shadow-lg"
+                onClick={() => setNavColor("green")}
               >
                 Get Started
               </Link>
@@ -96,14 +107,14 @@ const Navbar = () => {
                 <Link
                   to="/login"
                   className="text-white hover:text-blue-200 font-medium px-4 py-2 rounded-lg hover:bg-white hover:bg-opacity-10 transition duration-200"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => { setIsMenuOpen(false); setNavColor("blue"); }}
                 >
                   Sign In
                 </Link>
                 <Link
                   to="/signup"
-                  className="bg-white text-blue-600 hover:bg-blue-50 font-semibold px-4 py-2 rounded-lg transition duration-200"
-                  onClick={() => setIsMenuOpen(false)}
+                  className="bg-white text-green-600 hover:bg-green-50 font-semibold px-4 py-2 rounded-lg transition duration-200"
+                  onClick={() => { setIsMenuOpen(false); setNavColor("green"); }}
                 >
                   Get Started
                 </Link>

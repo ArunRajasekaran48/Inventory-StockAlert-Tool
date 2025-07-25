@@ -36,7 +36,7 @@ const Signup = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50 flex justify-center pt-12 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50 flex justify-center pt-5 p-4">
       <div className="w-full max-w-6xl mx-auto">
         <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
           <div className="flex flex-col lg:flex-row">
