@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom"
+import { useAuth } from '../context/AuthContext';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, onEdit }) => {
   const isLowStock = product.quantity <= product.threshold
+  const { isAdmin } = useAuth();
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
@@ -90,7 +92,7 @@ const ProductCard = ({ product }) => {
         {/* Action Button */}
         <Link
           to={`/products/${product.id}`}
-          className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2 group"
+          className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2 group mb-2"
         >
           <span>View Details</span>
           <svg
@@ -102,6 +104,17 @@ const ProductCard = ({ product }) => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
           </svg>
         </Link>
+        {isAdmin() && onEdit && (
+          <button
+            onClick={() => onEdit(product)}
+            className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-6 rounded-lg transition duration-200 flex items-center justify-center space-x-2"
+          >
+            <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536M9 11l6 6M3 17.25V21h3.75l11.06-11.06a2.121 2.121 0 00-3-3L3 17.25z" />
+            </svg>
+            <span>Edit</span>
+          </button>
+        )}
       </div>
     </div>
   )
